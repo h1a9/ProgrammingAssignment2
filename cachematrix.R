@@ -4,13 +4,19 @@
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
+  ## Assign the input matrix to a local copy 
   set <- function(y) {
     x <<- y
     m <<- NULL
   }
+  ## Creating a cached matrix
   get <- function() x
+  ## Setting the inverse of the matrix
   setinverse <- function(inverse) m <<- solve
+  ## Creating a cached inverse of the matrix
   getinverse <- function() m
+  
+  ## Making the special 'matrix' object
   list(set = set, get = get,
        setinverse = setinverse,
        getinverse = getinverse)
@@ -35,4 +41,3 @@ makeCacheMatrix <- function(x = matrix()) {
     x$setinverse(m)
     m
   }
-  
